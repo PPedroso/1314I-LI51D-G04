@@ -1,0 +1,15 @@
+        <div class="container customBorder">
+            <div id="map-canvas" class="customBorder myPaginationMap"></div>
+            <div id="mapOptionsSection">
+                <p class="bold"> Click on the following buttons to center the map and select the real estate in the list</p>
+                <%
+                   for(var i = 0; i < 5; ++i) {
+                      if(i < realEstates.length) { %>
+                            <button class="btn-default myButtons" data-value="<%= i %>">Marker Number <%= i+1 %>: <%= realEstates[i].name %></button>
+                      <% } else { %>
+                            <button class="btn-default myButtons hidden" data-value="<%= i %>"></button>
+                      <% }
+                   }
+                %>
+            </div>
+        </div>

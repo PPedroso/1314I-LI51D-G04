@@ -1,0 +1,104 @@
+<% include ../BasicHeader %>
+
+        <link href="/css/simple-sidebar.css" rel="stylesheet" type="text/css">
+        <script src="/jsCliente/jquery.MultiFile.js"></script>
+        <script type="text/javascript" src="/jsCliente/addRealEstate.js"></script>
+<% include ../NavBar %>
+
+        <div id="wrapper">
+
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand">Account Options</li>
+                    <li><a href="/account">Profile</a></li>
+                    <li><a href="/account/addProperty">Add Property</a></li>
+                    <li><a href="/account/addReservation">Add Reservation</a></li>
+                </ul>
+            </div>
+
+            <!-- Page content -->
+            <div id="page-content-wrapper">
+                <div class="page-content inset">
+                    <div class="row">
+                        <form name="realEstateForm" method="post" action="/realEstates/addrealEstate" class="form-horizontal" role="form" id="addPropertyForm" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="inputRealEstateName" class="col-sm-2 control-label">Name</label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="name" class="form-control" id="inputRealEstateName">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputRealEstateDescription" class="col-sm-2 control-label">Description</label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="description" class="form-control" id="inputRealEstateDescription">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputRealEstateCapacity" class="col-sm-2 control-label">Capacity</label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="capacity" class="form-control" id="inputRealEstateCapacity">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputRealEstateDimension" class="col-sm-2 control-label">Dimension</label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="dimension" class="form-control" id="inputRealEstateDimension">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputRealEstateNumberRooms" class="col-sm-2 control-label">Number of Rooms</label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="numberRooms" class="form-control" id="inputRealEstateNumberRooms">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputRealEstateNumberDivisions" class="col-sm-2 control-label">Number of Divisions</label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="numberDivisions" class="form-control" id="inputRealEstateNumberDivisions">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputRealEstateWeeklyPrice" class="col-sm-2 control-label">Weekly Price</label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="weeklyPrice" class="form-control" id="inputRealEstateWeeklyPrice">
+                                </div>
+                            </div>
+
+                            <div class="form-group" id="photosDiv">
+                                <label for="inputRealEstatePhoto" class="col-sm-2 control-label">Photos: </label>
+                                <div class="col-sm-4">
+                                    <!--<input type="file" name="photo1" class="form-control" id="inputPhoto1">-->
+                                    <input type="file" name="photo[]" class="multi" accept="png|jpg" id="inputRealEstatePhoto"/>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label for="inputRealEstateLocation" class="col-sm-2 control-label">Location Name</label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="locName" class="form-control" id="inputRealEstateLocation">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputRealEstateLatitude" class="col-sm-2 control-label">Location Latitude</label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="latitude" class="form-control" id="inputRealEstateLatitude">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputRealEstateLongitude" class="col-sm-2 control-label">Location Longitude</label>
+                                <div class="col-sm-7">
+                                    <input type="text" name="longitude" class="form-control" id="inputRealEstateLongitude">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" id="registerSubmitButton" class="btn btn-default">Insert Real Estate</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<% include ../Bottom %>

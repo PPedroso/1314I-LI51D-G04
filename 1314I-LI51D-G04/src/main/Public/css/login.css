@@ -1,0 +1,22 @@
+body, html {
+    width: 100%;
+}
+
+.box {
+    float: left;
+    width: 49%;
+    display: table-cell;
+}
+
+.container {
+    margin-top: 10px;
+    display: table;
+    height:100%;
+}
+
+.row {
+    min-width: 960px;
+    display: table-cell;
+    height: 100%;
+    vertical-align:middle;
+}

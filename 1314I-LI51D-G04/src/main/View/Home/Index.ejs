@@ -1,0 +1,83 @@
+<% include ../BasicHeader %>
+
+
+<link href="/css/mainpage.css" rel="stylesheet" type="text/css">
+
+<% include ../NavBar %>
+
+        <div>
+            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+                </ol>
+
+                <div class="carousel-inner">
+                    <div class="item active imagemSlideShow" >
+                        <img src="http://s10.postimg.org/4o9fphj3t/barcelona_Todas_Juntas.jpg" alt="slideShowImg1">
+                        <div class="carousel-caption">
+                            <h1>Barcelona</h1>
+                        </div>
+                    </div>
+                    <div class="item imagemSlideShow">
+                        <img src="http://s27.postimg.org/pjglkvneb/London_Tudo_Junto.jpg" alt="slideShowImg1">
+                        <div class="carousel-caption">
+                            <h1>London</h1>
+                        </div>
+                    </div>
+                    <div class="item imagemSlideShow">
+                        <img src="http://s29.postimg.org/vmo2ak11j/Lisbon_Tudo_Junto.jpg" alt="slideShowImg1">
+                        <div class="carousel-caption">
+                            <h1>Lisbon</h1>
+                        </div>
+                    </div>
+                    <div class="item imagemSlideShow">
+                        <img src="http://s27.postimg.org/wu2x5ip0z/Rome_Todas_Juntas.jpg" alt="slideShowImg1">
+                        <div class="carousel-caption">
+                            <h1>Rome</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                </a>
+                <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                </a>
+            </div>
+        </div>
+
+            <div class="row col-md-6 container" id="main_page_addition">
+                <h3>Newest Additions</h3>
+                <%for(var i = 0; i < newQueryStates.length; i++) {%>
+                <div class="list-group">
+                    <a href="/realEstates/realEstate?realEstateId=<%=newQueryStates[i]._id%>" class="list-group-item active">
+                        <h4 class="list-group-item-heading"><%=newQueryStates[i].name%></h4>
+                        <img  class="img_main" src="/realEstates/photos?photoId=<%=newQueryStates[i].photos[0]%>">
+                        <img class="star" src="/images/star<%=Math.round(newQueryStates[i].ratings.average)%>.png">
+                        <p class="list-group-item-text">Location: <%=newQueryStates[i].location.locName%></p>
+                    </a>
+                </div>
+                <% } %>
+            </div>
+
+
+
+            <div class="row col-md-6 container" id="main_page_addition">
+                <h3>Top Rated</h3>
+                <%for(var i = 0; i < topQueryStates.length; i++) {%>
+                <div class="list-group">
+                    <a href="/realEstates/realEstate?realEstateId=<%=topQueryStates[i]._id%>" class="list-group-item active">
+                        <h4 class="list-group-item-heading"><%=topQueryStates[i].name%></h4>
+                        <img  class="img_main" src="/realEstates/photos?photoId=<%=topQueryStates[i].photos[0]%>">
+                        <img class="star" src="/images/star<%=Math.round(topQueryStates[i].ratings.average)%>.png">
+                        <p class="list-group-item-text">Location: <%=topQueryStates[i].location.locName%></p>
+                    </a>
+                </div>
+                <% } %>
+            </div>
+
+<% include ../Bottom %>

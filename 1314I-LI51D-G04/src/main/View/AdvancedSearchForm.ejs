@@ -1,0 +1,79 @@
+<div class="container">
+    <div id="advancedSearchBox" class="row customBorder">
+        <div class="col-md-10 col-md-offset-1 container">
+            <form action="/realEstates/advancedSearch" method="GET" id="advancedSearchForm">
+                <input type="hidden" name="pageNr" value="1">
+                <div id="fieldSelectionDiv" class="form-group row">
+                    <div class="row col-md-8">
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Name: </label>
+                                <input type="text" name="name" class="form-control" value="<%= (searchParameters['name']) ? searchParameters['name'] : '' %>">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Location: </label>
+                                <input type="text" name="location" class="form-control" value="<%= (searchParameters['location']) ? searchParameters['location'] : '' %>">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-3">
+                                <label>Minimum weekly price: </label>
+                                <input type="number" name="minPrice" class="form-control" value="<%= (searchParameters['minPrice']) ? searchParameters['minPrice'] : '' %>">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Maximum weekly price: </label>
+                                <input type="number" name="maxPrice" class="form-control" value="<%= (searchParameters['maxPrice']) ? searchParameters['maxPrice'] : '' %>">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Minimum capacity: </label>
+                                <input type="number" name="minCapacity" class="form-control" value="<%= (searchParameters['minCapacity']) ? searchParameters['minCapacity'] : '' %>">
+                            </div>
+                            <div class="form-group col-md-3">
+                                <label>Maximum capacity: </label>
+                                <input type="number" name="maxCapacity" class="form-control" value="<%= (searchParameters['maxCapacity']) ? searchParameters['maxCapacity'] : '' %>">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="orderByDiv" class="col-md-2">
+                        <h3>Order by:</h3>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="orderBy" id="optionsRadios1" value="ascPrice" <%= (searchParameters['orderBy'] === 'ascPrice') ? 'checked' : '' %>>
+                                Lowest Prices
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="orderBy" id="optionsRadios2" value="descPrice" <%= (searchParameters['orderBy'] === 'descPrice') ? 'checked' : '' %>>
+                                Highest Prices
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="orderBy" id="optionsRadios2" value="location" <%= ((searchParameters['orderBy'] === 'location')  ? 'checked' : '') %>>
+                                Location
+                            </label>
+                        </div>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="orderBy" id="optionsRadios2" value="capacity" <%= (searchParameters['orderBy'] === 'capacity')  ? 'checked' : '' %>>
+                                Capacity
+                            </label>
+                        </div>
+                    </div>
+                    <div id="restrictionsDiv" class="col-md-2">
+                        <h3>Restrictions: </h3>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="availableOnly" value="true" <%= (searchParameters['availableOnly'])  ? 'checked' : '' %>> Available Only
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-default">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

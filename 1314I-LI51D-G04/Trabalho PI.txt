@@ -1,0 +1,89 @@
+Uris
+
+- HomePage -> / 
+
+	action: GET
+
+- property -> /Properties/Property ? ...
+
+	action: GET POST
+
+- properties -> /Properties/search
+
+	action: GET
+
+- property comments -> /Properties/{propertyId}/Comments
+
+	action: GET POST
+  
+- Account registo -> /Accounts/Registration
+
+
+- Account info -> /Accounts/Profile 
+
+
+- Reservation -> /Reservations/Reservation ? 
+
+
+- Reservations -> /Reservations
+
+	action: GET POST
+
+
+Página principal
+	- Banner
+		- Autenticação
+		- Logo
+	
+	- Search Bar
+	- Adicionar Imovel (Se não logado, redirecionar)
+	- Top Rated
+	- Ultimos adicionados
+
+Pesquisa Imovel
+	- Banner 
+	
+	- Search Bar ( com drop down box )
+	- Advanced Search (Painel a aparecer)
+	- Results (com threshold e paginação)
+
+Detalhes Imovel
+	- Banner
+	
+	- Detalhes
+	- Comentarios (com limite e ver mais)
+	- Adicionar Comentario
+	- Mapa
+	- Apreciações
+	- "Botao" de reservar 
+
+Login 
+	- Banner
+	
+	- Campos com user e password (Com login feed)
+	- Registration Form (Senão o tiago grita)
+
+Profile do utilizador
+	- Banner
+	
+	- Suas reservas
+	- Seus Comentarios
+	- Sua informação
+
+Lista Comentarios
+	- Banner
+
+	- lista de comentarios (com informação de autor, hora, etc)
+	- Paginação
+
+Adicionar Imovel
+	- Banner
+
+	- Formulario
+
+Alugar imovel
+	- Banner
+
+	- Formulario
+
+	 

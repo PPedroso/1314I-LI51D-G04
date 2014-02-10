@@ -1,0 +1,30 @@
+<% if(!isAjax) { %>
+    <% include ../BasicHeader %>
+        <link href="/css/ListRealEstates.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg48bOb8ro9kvOtDWxz7zxt_U5bP1jAZ8&sensor=false"></script>
+        <script type="application/javascript" src="/jsCliente/searchRelated.js"></script>
+        <script type="application/javascript">
+            <%
+                var realEstatesLoc = realEstates.map(function(entry) {
+                    return {
+                            latitude: entry.location.latitude,
+                            longitude: entry.location.longitude
+                    };
+                });;
+            %>
+            registerEvents('realEstatesList', true, <%= maxPageNumber %>, <%- JSON.stringify(realEstatesLoc)%>);
+        </script>
+    <% include ../NavBar %>
+        <% include ../MapRealEstate %>
+        <div class="container customBorder">
+            <div id="realEstatesList" class="list-group">
+<% } %>
+                <% include ../ListRealEstate %>
+<% if(!isAjax) { %>
+            </div>
+            <div class="pull-right">
+                <% include ../Pagination %>
+            </div>
+        </div>
+    <% include ../Bottom %>
+<% } %>

@@ -1,0 +1,32 @@
+<% include ../BasicHeader %>
+
+<% include ../NavBar %>
+
+<div id="realEstateList" class="customBorder">
+    <ul>
+        <% for(var i = 0; i < realEstates.list.length && i < 5; ++i) { %>
+        <li>
+            <div class="realEstate row">
+                <div class="col-md-4">
+                    <p> <%= realEstates.list[i].name %> </p>
+                </div>
+                <div class="col-md-4">
+                    <p>Rating:  <%= realEstates.list[i].description %> </p>
+                </div>
+                <div class="col-md-4">
+                    <p> <%= realEstates.list[i].location.locName%> </p>
+                </div>
+            </div>
+            <p><%= realEstate.ratings.list[i].description %></p>
+        </li>
+        <div class="hr-like"></div>
+        <% } %>
+    </ul>
+</div>
+
+
+
+
+</div>
+
+<% include ../Bottom %>

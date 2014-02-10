@@ -1,0 +1,153 @@
+<% include ../BasicHeader %>
+
+    <link href="/css/specificRealEstate.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAg48bOb8ro9kvOtDWxz7zxt_U5bP1jAZ8&sensor=false"></script>
+    <script type="text/javascript" src="/jsCliente/realEstateSpecific.js"></script>
+    <script type="text/javascript">
+        preparePageEvents(<%= realEstate.ratings.list.length - 5%>, '<%= realEstate._id %>', <%- JSON.stringify(photos.extraPhotos) %>,
+                          <%= realEstate.location.latitude %>, <%= realEstate.location.longitude %>);
+    </script>
+
+<% include ../NavBar %>
+
+        <div class="container customBorder">
+            <div id="currentPhoto">
+                <img src="<%= photos.startPhotos[0] %>" class="images">
+            </div>
+            <% if(photos.startPhotos.length > 1) {%>
+                <div id="otherPhotos" class="customBorder">
+                    <div class="row">
+                    <% if(photos.extraPhotos.length > 0) { %>
+                        <div class="col-md-1">
+                            <button id="photoMoveLeftButton">Left</button>
+                        </div>
+                        <div class="col-md-10">
+                    <% } %>
+                            <% for(var i = 1; i < photos.startPhotos.length && i < 7; ++i) { %>
+                                <div class="col-md-2" >
+                                    <div class="divWithPhoto" >
+                                        <img src="<%= photos.startPhotos[i] %>" class="images">
+                                    </div>
+                                </div>
+                            <% } %>
+                    <% if(photos.extraPhotos.length > 0) { %>
+                        </div>
+                        <div class="col-md-1">
+                            <button id="photoMoveRightButton">Right</button>
+                        </div>
+                    <% } %>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div id="mapSection" class="col-md-4 customBorder">
+                    <div>
+                        <div id="map-canvas" class="customBorder"></div>
+                    </div>
+                    <div id="mapRelatedOptions">
+                        <h3 class="realEstateSectionTitle">Map Options</h3>
+                        <button id="backToMapMarker" class="btn-default myButtons center-block">Back to original location</button>
+                    </div>
+                </div>
+                <div id="realEstateInformation" class="col-md-8 customBorder">
+                    <h2 class="realEstateSectionTitle">Real Estate Information</h2>
+                    <div class="row">
+                        <div class="col-md-6 row">
+                            <ul class="information-group">
+                                <li><p> <span class="bold-class"> Name: </span> <%= realEstate.name %> </p></li>
+                                <li><p> <span class="bold-class"> Location: </span> <%= realEstate.location.locName %> </p></li>
+                                <li><p> <span class="bold-class"> Capacity: </span> <%= realEstate.capacity %> </p></li>
+                                <li><p> <span class="bold-class"> Dimension: </span> <%= realEstate.dimension %> </p></li>
+                                <li><p> <span class="bold-class"> Number of Rooms: </span> <%= realEstate.numberOfRooms %> </p></li>
+                                <li><p> <span class="bold-class"> Number of Division: </span> <%= realEstate.numberOfDivisions %> </p></li>
+                                <li><p> <span class="bold-class"> Weekly Price: </span> <%= realEstate.weeklyPrice %>€ </p></li>
+                                <li><p> <span class="bold-class"> Date Added: </span> <%= realEstate.date %> </p></li>
+                                <li><p> <span class="bold-class"> Average Rating: </span> <span id="realEstateAverageRating"><%= realEstate.ratings.average %> </span></p></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="information-group">
+                                <li><p> <span class="bold-class"> Description: </span> <%= realEstate.description %> </p></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="reservationsSection" class="container customBorder">
+            <div class="row">
+                <h2 class="realEstateSectionTitle">Current Reservations</h2>
+                <% for(var i = 0; i < realEstate.reservations.length; ++i) { %>
+                    <div class="col-md-3 customBorder dateInformation">
+                        <p> <span class="bold-class"> From: </span> <%= realEstate.reservations[i].dateBegin %> </p>
+                        <p> <span class="bold-class"> To: </span> <%= realEstate.reservations[i].dateEnd %> </p>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+        <div id="ratingSection" class="container customBorder">
+            <div id="addRatingSection" class="customBorder">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <form id="addRatingForm" class="form-horizontal" role="form" method="post" action="/realEstates/<%= realEstate._id %>/ratings">
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
+                                    <div class="col-sm-10">
+                                        <% if(isLogged) { %>
+                                            <input type="hidden" name="author" value="<%= currentUser %>"
+                                        <% } else { %>
+                                            <input type="text" class="form-control" id="inputName" name="author" placeholder="Name">
+                                        <% } %>
+                                    </div>
+                                </div>
+                                <div class="col-md-2">
+                                    <label for="inputRating" class="col-md-6 control-label pull-right">Rating</label>
+                                </div>
+                                <div class="col-md-2">
+                                    <select id="inputRating" name="rating" class="form-control">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <label for="inputDescription">Description</label>
+                            <textarea id="inputDescriptionRating" name="description" class="form-control" rows="3"></textarea>
+                            <button type="submit" id="registerRatingButton" class="btn btn-default center-block">Add new rating</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="listRatingSection" class="customBorder">
+                <ul>
+                    <% for(var i = realEstate.ratings.list.length - 1; i >= 0 && i >= realEstate.ratings.list.length - 5; --i) { %>
+                        <li>
+                            <div class="ratingHeaders row">
+                                <div class="col-md-4">
+                                    <p> <%= realEstate.ratings.list[i].author %> </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Rating:  <%= realEstate.ratings.list[i].rating %> </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p> <%= realEstate.ratings.list[i].date %> </p>
+                                </div>
+                            </div>
+                            <p><%= realEstate.ratings.list[i].description %></p>
+                        </li>
+                        <div class="hr-like"></div>
+                    <% } %>
+                </ul>
+                <% if(realEstate.ratings.list.length > 5 ) { %>
+                    <div id="getMoreRatingsDiv">
+                        <button id="getMoreRatingsButton" class="btn-default myButtons center-block text-center">View more ratings</button>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+<% include ../Bottom %>

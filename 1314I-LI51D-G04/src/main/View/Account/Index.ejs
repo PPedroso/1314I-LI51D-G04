@@ -1,0 +1,54 @@
+<% include ../BasicHeader %>
+
+<link href="/css/mainpage.css" rel="stylesheet" type="text/css">
+
+<% include ../NavBar %>
+
+<!-- User owned real estates -->
+
+
+<div container>
+
+    <div class="row top-right">
+        <h3><%=user.name%></h3>
+    </div>
+
+    <div class="row col-md-6 container" id="main_page_addition">
+            <h3>Owned Real Estates</h3>
+            <%for(var i = 0; i < user.realEstateList.length; i++) {%>
+            <div class="list-group">
+                <a href="/realEstates/realEstate?realEstateId=<%=user.realEstateList[i]._id%>" class="list-group-item active">
+                    <h4 class="list-group-item-heading"><%=user.realEstateList[i].name%></h4>
+                    <img  class="img_main" src="/realEstates/photos?photoId=<%=user.realEstateList[i].photos[0]%>">
+                    <img class="star" src="/images/star<%=Math.round(user.realEstateList[i].ratings.average)%>.png">
+                    <p class="list-group-item-text">Location: <%=user.realEstateList[i].location.locName%></p>
+                </a>
+            </div>
+            <% } %>
+    </div>
+
+    <div class="row col-md-6 container" id="main_page_addition">
+        <h3>Bookings</h3>
+        <%for(var i = 0; i < user.bookingsList.length; i++) {%>
+        <div class="list-group">
+            <a href="/realEstates/realEstate?realEstateId=<%=user.bookingsList[i]._id%>" class="list-group-item active">
+                <h4 class="list-group-item-heading"><%=user.bookingsList[i].name[0]%></h4>
+                <img  class="img_main" src="/realEstates/photos?photoId=<%=user.bookingsList[i].photos[0]%>">
+                <p class="list-group-item-text">Status: <b><%=user.bookingsList[i].reservations[0].finalized%></b></p>
+                <p class="list-group-item-text">From: <%=user.bookingsList[i].reservations[0].dateBegin%></p>
+                <p class="list-group-item-text">To: <%=user.bookingsList[i].reservations[0].dateEnd%></p>
+            </a>
+        </div>
+        <% } %>
+    </div>
+</div>
+
+
+
+
+
+    <!-- User comments-->
+    <!--To do-->
+
+
+<% include ../Bottom %>

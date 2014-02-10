@@ -1,0 +1,84 @@
+.images {
+    border:2px solid;
+    border-radius:15px;
+    background-color:#2C2C2C;
+}
+
+#currentPhoto .images {
+    height: 500px;
+    width: 100%;
+}
+
+#otherPhotos {
+    padding: 10px 10px;
+}
+.divWithPhoto {
+    height: 100px;
+}
+.divWithPhoto .images {
+    width: 100%;
+    height: 100%;
+}
+
+#map-canvas {
+    height:300px;
+    width: 100%;
+}
+
+#mapRelatedOptions {
+    left:0;
+    right:0;
+    padding-top: 2px;
+}
+
+#realEstateInformation {
+    height:100%;
+}
+
+.informationName, .informationValue {
+    width: 50%;
+    float: left;
+}
+
+.informationName {
+    font-weight: bold;
+}
+
+.realEstateSectionTitle {
+    text-align: center;
+}
+
+span.bold-class {
+    font-weight: bold;
+}
+
+.dateInformation {
+    padding: 10px 10px;
+    text-align: center;
+}
+
+#listRatingSection ul {
+    list-style-type: none;
+}
+
+.ratingHeaders p {
+    text-align: center;
+    font-weight: bold;
+}
+
+div.hr-like:after {
+    height:1px;
+    background:#FFFFFF;
+    width:96%;
+    display:block;
+    content:"";
+    margin:6px 0;
+}
+
+#getMoreRatingsButton {
+    width: 90%;
+}
+
+#registerRatingButton {
+    margin-top: 10px;
+}

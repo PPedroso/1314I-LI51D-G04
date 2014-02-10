@@ -1,0 +1,46 @@
+<ul id="paginationDiv" class="pagination">
+    <% function getActionHref(pageNr) {
+        return action.path + '?pageNr=' + pageNr + action.queryString;
+    }%>
+    <% if(currentPage > 3) { %>
+        <li><a id="firstPageButton" href="<%= getActionHref(1)%>">&laquo;</a></li>
+    <% } else { %>
+        <li><a id="firstPageButton" href="<%= getActionHref(1)%>" class="hidden">&laquo;</a></li>
+    <% } %>
+    <% if(currentPage > 1) { %>
+        <li><a id="previousPageButton" href="<%= getActionHref(currentPage-1)%>">Previous</a></li>
+    <% } else { %>
+        <li><a id="previousPageButton" href="<%= getActionHref(currentPage-1)%>" class="hidden">Previous</a></li>
+    <% } %>
+    <% if(currentPage > 2) { %>
+        <li><a id="numberPageButtonLess2" href="<%= getActionHref(currentPage-2)%>" data-value="-2"><%= currentPage-2 %></a></li>
+    <% } else { %>
+        <li><a id="numberPageButtonLess2" href="<%= getActionHref(currentPage-2)%>" data-value="-2" class="hidden"><%= currentPage-2 %></a></li>
+    <% } %>
+    <% if(currentPage > 1) { %>
+        <li><a id="numberPageButtonLess1" href="<%= getActionHref(currentPage-1)%>" data-value="-1"><%= currentPage-1 %></a></li>
+    <% } else { %>
+        <li><a id="numberPageButtonLess1" href="<%= getActionHref(currentPage-1)%>" data-value="-1" class="hidden"><%= currentPage-1 %></a></li>
+    <% } %>
+        <li class="active"><a id="currentPageButton"><%= currentPage %></a></li>
+    <% if(maxPageNumber > currentPage) { %>
+        <li><a id="numberPageButtonPlus1" href="<%= getActionHref(+currentPage + 1)%>" data-value="1"><%= +currentPage + 1 %></a></li>
+    <% } else { %>
+        <li><a id="numberPageButtonPlus1" href="<%= getActionHref(+currentPage + 1)%>" data-value="1" class="hidden"><%= +currentPage+ 1 %></a></li>
+    <% } %>
+    <% if(maxPageNumber > +currentPage + 1) { %>
+        <li><a id="numberPageButtonPlus2" href="<%= getActionHref(+currentPage + 2)%>" data-value="2"><%= +currentPage + 2 %></a></li>
+    <% } else { %>
+        <li><a id="numberPageButtonPlus2" href="<%= getActionHref(+currentPage + 2)%>" data-value="2" class="hidden"><%= +currentPage+ 2 %></a></li>
+    <% } %>
+    <% if(maxPageNumber > currentPage) { %>
+        <li><a id="nextPageButton" href="<%=getActionHref(+currentPage+1)%>">Next</a></li>
+    <% } else { %>
+        <li><a id="nextPageButton" href="<%=getActionHref(+currentPage+1)%>" class="hidden">Next</a></li>
+    <% } %>
+    <% if(maxPageNumber > currentPage + 3 ) { %>
+        <li><a id="lastPageButton" href="<%= getActionHref(maxPageNumber)%>">&raquo;</a></li>
+    <% } else { %>
+        <li><a id="lastPageButton" href="<%= getActionHref(maxPageNumber)%>" class="hidden">&raquo;</a></li>
+    <% } %>
+</ul>

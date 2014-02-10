@@ -1,0 +1,57 @@
+    <% if(!isLogged) { %>
+        <script type="text/javascript" src="/jsCliente/authRelated.js"></script>
+    <% } %>
+    </head>
+    <body>
+        <div id="fixme">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/">Ah e tal, viva para todos</a>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <div class="col-sm-6 col-md-5">
+                        <form class="navbar-form" role="search" method="get" action="/realEstates/SearchByLocation" id="navbar_search_form" name="navbar_search_form">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search by destination" id="navbar_search_query" name="location">
+                                <input type="hidden" name="pageNr" value="1">
+                                <div class="input-group-btn">
+                                    <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <ul class="nav navbar-nav">
+                        <li><a href="/realEstates/advancedSearch">Advanced Search</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <!-- verify whether the user is logged, in case it's not show dropdown box with login form -->
+                        <% if(!isLogged) {%>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Login<b class="caret"></b></a>
+                            <ul class="dropdown-menu" style="min-width:280px">
+                                <form class="navbar-form navbar-left" role="search" action="/account/login" method="POST" id="navbarLoginForm">
+                                    <div class="form-group">
+                                        <label>Username</label>
+                                        <input type="text" name="username" class="form-control ">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Password</label>
+                                        <input type="password" name="password" class="form-control">
+                                    </div>
+                                    <li class="divider"></li>
+                                    <button type="submit" id="navbarLoginButton" class="btn btn-default">Login</button>
+                                    <button type="submit" id="navbarRegisterButton" class="btn btn-default">Register</button>
+                                </form>
+                            </ul>
+                        </li>
+                        <!-- in case a user was logged in, show a link to account page -->
+                        <% } else { %>
+                        <ul class="nav navbar-nav">
+                            <li><a href="/account/logOut">Log Out</a></li>
+                            <li><a href="/account">Account Panel</a></li>
+                        </ul>
+                        <% } %>
+                    </ul>
+                </div>
+            </nav>
+        </div>

@@ -1,0 +1,36 @@
+<% include ../BasicHeader %>
+
+<link href="/css/mainpage.css" rel="stylesheet" type="text/css">
+
+<% include ../NavBar %>
+
+
+    <div class="row col-md-6 container" id="main_page_addition">
+        <h3>Pending bookings</h3>
+        <%for(var i = 0; i < user.bookingsList.length; i++) {%>
+        <div class="list-group">
+            <a href="/realEstates/realEstate?realEstateId=<%=user.bookingsList[i]._id%>" class="list-group-item active">
+                <h4 class="list-group-item-heading"><%=user.bookingsList[i].name[0]%></h4>
+                <img  class="img_main" src="/realEstates/photos?photoId=<%=user.bookingsList[i].photos[0]%>">
+                <p class="list-group-item-text">Status:<b> <%=user.bookingsList[i].reservations[0].finalized%></b></p>
+                <p class="list-group-item-text">From: <%=user.bookingsList[i].reservations[0].dateBegin%></p>
+                <p class="list-group-item-text">To: <%=user.bookingsList[i].reservations[0].dateEnd%></p>
+            </a>
+            <form action = "pending" method = "POST" >
+                <input type="hidden" name="status" value="Accepted">
+                <input type="hidden" name="objectId" value=<%=user.bookingsList[i]._id%>>
+                <input type="hidden" name="user" value=<%=user.bookingsList[i].reservations[0].author%>>
+                <input type="submit" value="Accept">
+            </form>
+
+            <form action = "pending" method = "POST" >
+                <input type="hidden" name="status" value="Rejected">
+                <input type="hidden" name="objectId" value=<%=user.bookingsList[i]._id%>>
+                <input type="hidden" name="user" value=<%=user.bookingsList[i].reservations[0].author%>>
+                <input type="submit" value="Decline">
+            </form>
+        </div>
+        <% } %>
+    </div>
+
+<% include ../Bottom %>

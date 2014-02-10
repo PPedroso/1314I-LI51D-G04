@@ -1,0 +1,31 @@
+<% include ../BasicHeader %>
+        <link href="/css/login.css" rel="stylesheet" type="text/css">
+<% include ../NavBar %>
+                <div class="container">
+                    <div class="row">
+                        <div class="box">
+                            <% if(loginOrRegisterFailedMessage.length > 0) { %>
+                                <div class="alert alert-danger"><%= loginOrRegisterFailedMessage %></div>
+                            <% } %>
+                            <form method="post" action="" class="form-horizontal" role="form" id="loginForm">
+                                <div class="form-group">
+                                    <label for="inputUsername" class="col-sm-2 control-label">Username</label>
+                                    <div class="col-sm-7">
+                                        <input type="text" name="username" class="form-control" id="inputUsername" placeholder="UserName">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword" class="col-sm-2 control-label">Password</label>
+                                    <div class="col-sm-7">
+                                        <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <button type="submit" id="loginSubmitButton" class="btn btn-default">Login</button>
+                                    <button type="submit" id="registerSubmitButton" class="btn btn-default">Register</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+<% include ../Bottom %>

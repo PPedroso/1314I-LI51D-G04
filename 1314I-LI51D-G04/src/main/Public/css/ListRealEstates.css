@@ -1,0 +1,36 @@
+.realEstateEntry {
+    height: 125px;
+    padding: 0;
+}
+
+.realEstateEntry div {
+    height:100%;
+}
+
+.realEstateEntry img {
+    height: 122px;
+    width: 100%;
+    margin:0;
+    padding: 0;
+}
+
+.textDivs {
+    font-size: 17px;
+}
+
+.myPaginationMap {
+    height: 300px;
+}
+
+#mapOptionsSection .myButtons {
+    float:left;
+    margin: 0 0 10px 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.highlight {
+    background-color: #606060;
+}

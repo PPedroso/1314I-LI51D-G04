@@ -1,0 +1,3 @@
+- Botao register está com style inline, mudar para css
+
+- tirar a allteração do min-width=300px no dropdown

@@ -1,0 +1,23 @@
+                <% realEstates.forEach(function(entry) { %>
+                    <div class="list-group-item row customBorder realEstateEntry">
+                        <div class="row col-md-2">
+                            <img src="/realEstates/photos?photoId=<%=entry.photos[0]%>">
+                        </div>
+                        <div class="row col-md-10">
+                            <h1 class="text-center"><a href="/realEstates/realEstate?realEstateId=<%=entry._id%>"><%=entry.name%></a></h1>
+                            <div class="row container textDivs">
+                                <div class="col-md-4">
+                                    <p>Weekly Price: <%=entry.weeklyPrice%>€</p>
+                                    <p>Location: <%=entry.location.locName %></p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Capacity: <%=entry.capacity%></p>
+                                    <p>Number of Rooms: <%=entry.numberRooms%></p>
+                                </div>
+                                <div class="col-md-4">
+                                    <p>Availability: <%= (entry.availability) ? 'Available' : 'Currently Occupied' %></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
